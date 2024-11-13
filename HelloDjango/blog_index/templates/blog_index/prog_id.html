@@ -1,0 +1,46 @@
+{% extends 'blog_index/baze.html' %}
+
+
+{% block main %}
+<section>
+<div class="progect_detali conteiner">
+    <h2 class="progect_name"> {{ object.title }} </h2>
+    <div class="progect_center">
+        <div class="progect_img">
+            <img src="{{ object.img.url }}" alt="{{ object.text }}">
+
+        </div>
+        <div class="progect_text">
+            <p> {{ object.text }}</p>
+
+                <p class="re">
+                    {% for tag in object.tags.all %}
+                    <span>#{{ tag }}</span>
+                    {% endfor %}
+                </p>
+
+            {% if object.link_progect != '-' %}
+                <p class="w_link"><a href="{{ object.link_progect }}">Посмотреть проект</a></p>
+            {% else %}
+                <p></p>
+            {% endif %}
+
+            {% if object.link_github != '-' %}
+                <p class="w_link"><a href="{{ object.link_github }}">Код на GitHub</a></p>
+            {% else %}
+                <p></p>
+            {% endif %}
+
+            {% if object.link_figma != '' %}
+                <p class="w_link"><a href="{{ object.link_figma }}">Шаблон проекта на Figma</a></p>
+            {% else %}
+                <p></p>
+            {% endif %}
+
+        </div>
+    </div>
+
+
+</div>
+</section>
+{% endblock %}

@@ -1,0 +1,115 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif+Caption&family=Press+Start+2P&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300..700&display=swap" rel="stylesheet">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" href="{% static 'blog_index/index.css' %}">
+    <title>{{ title }}</title>
+</head>
+
+<div class="hear1">
+    <div class="header">
+        <div class="name"><a href="{% url 'home' %}">Дарья</a></div>
+        <div class="teleg_whup">
+            <a href="https://wa.me/79152021409">
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <rect width="48" height="48" fill="url(#pattern0_1908_502)"/>
+                <defs>
+                <pattern id="pattern0_1908_502" patternContentUnits="objectBoundingBox" width="1" height="1">
+                <use xlink:href="#image0_1908_502" transform="scale(0.01)"/>
+                </pattern>
+                <image id="image0_1908_502" width="100" height="100" xlink:href="data:image/png;base64,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"/>
+                </defs>
+                </svg>
+            </a>
+            <a href="https://t.me/DariaShpuntova">
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <rect width="48" height="48" fill="url(#pattern0_1908_503)"/>
+                <defs>
+                <pattern id="pattern0_1908_503" patternContentUnits="objectBoundingBox" width="1" height="1">
+                <use xlink:href="#image0_1908_503" transform="scale(0.01)"/>
+                </pattern>
+                <image id="image0_1908_503" width="100" height="100" xlink:href="data:image/png;base64,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"/>
+                </defs>
+                </svg>
+            </a>
+        </div>
+        <div class="headersvg">
+        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="64" height="64" viewBox="0,0,256,256">
+            <g fill="#ddeaf3" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(5.12,5.12)"><path d="M0,7.5v5h50v-5zM0,22.5v5h50v-5zM0,37.5v5h50v-5z"></path></g></g>
+        </svg></div>
+    <div class="header_menu">
+
+    <a href="{% url 'works' %}">Мои работы</a>
+    <a href="{% url 'about_me' %}">Обо мне</a>
+    </div>
+    </div>
+
+    {% block header %}
+
+    {% endblock %}
+
+
+</div>
+
+
+{% block main %}
+
+{% endblock %}
+
+
+
+{% block main_page %}
+
+{% endblock %}
+<div class="foot">
+<div class="conteiner">
+    <btn><a href="https://t.me/DariaShpuntova">Связаться через Telegram</a></btn>
+
+</div>
+<footer>
+    <div>
+    <a href="{% url 'home' %}">Главлая страница</a>
+    <a href="{% url 'works' %}">Мои работы</a>
+    <a href="{% url 'about_me' %}">Обо мне</a>
+    </div>
+    <p class="foot_m">@2024 Шпунтова Дарья</p>
+</footer>
+
+
+</div>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="{% static 'blog_index/main5.js' %}"></script>
+
+
+</body>
+</html>

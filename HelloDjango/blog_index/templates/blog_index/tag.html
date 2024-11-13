@@ -1,0 +1,49 @@
+{% extends 'blog_index/baze.html' %}
+
+{% block main %}
+<section class="tehnology_section">
+    <div class="conteiner tehnology">
+    <h2>Стек технологий</h2>
+        <div class="teh_context">
+            {% for tag in all_tags %}
+              <div class="teh_content">
+                  <div class="teh_content2">
+                    <a href="/tag/{{ tag.pk }}">
+                    <div>{{ tag.svg|safe }} {{ tag.tag }}</div>
+                    <p>{{ tag.text_tag }}</p>
+                    </a></div></div>
+            {% endfor %}
+       </div>
+    </div>
+</section>
+
+
+<section>
+<div class="conteiner">
+    <h2 class="tag_title">{{ title }}</h2>
+</div>
+
+<div class="conteiner">
+    <div class="last_work">
+        {% for name in name_progect %}
+            <a href="{{ name.get_absolute_url }}" class="progect">
+                <div class="prog_text">
+                    <h4>{{ name.title }}</h4>
+                    <div class="prog_center">
+                        <div class="p_img" style="background-image: url({{ name.img.url }})"></div>
+                    <p>{{ name.text }}</p>
+                    </div>
+                    <p>
+                        {% for tag in name.tags.all %}
+                        <span>#{{ tag }}</span>
+                        {% endfor %}
+                    </p>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+</div>
+</section>
+
+
+{% endblock %}

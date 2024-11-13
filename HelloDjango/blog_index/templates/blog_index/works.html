@@ -1,0 +1,29 @@
+{% extends 'blog_index/baze.html' %}
+
+{% block main %}
+<section class="works">
+   <div class="conteiner" >
+      <div class="last_work">
+        {% for p in progects %}
+        <a href="{{ p.get_absolute_url }}" class="progect">
+            <div class="prog_text">
+                <h4>{{ p.title }}</h4>
+                <div class="prog_center">
+                   <div class="p_img" style="background-image: url({{ p.img.url }})"></div>
+
+                        <p>{{ p.text }}</p>
+                    </div>
+                    <p>
+                    {% for tag in p.tags.all %}
+                    <span>#{{ tag }}</span>
+                    {% endfor %}
+                </p>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+
+   </div>
+</section>
+
+{% endblock %}
