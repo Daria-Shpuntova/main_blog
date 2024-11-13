@@ -1,0 +1,36 @@
+Как программист, я вижу, что проблема возникает в том, что Вы пытаетесь присвоить строковое значение 'bl_soap' полю product модели Basket, которое ожидает экземпляр модели Product. Это приводит к ошибке ValueError: Cannot assign "'bl_soap'": "Basket.product" must be a "Product" instance..
+
+Чтобы исправить это, Вам нужно передавать в форму экземпляр модели Product, а не его строковое представление. Вы можете сделать это, изменив определение формы BasketForm следующим образом:
+
+from django import forms
+from .models import Basket, Product
+
+class BasketForm(forms.ModelForm):
+    product = forms.ModelChoiceField(queryset=Product.objects.all())
+
+    class Meta:
+        model = Basket
+        fields = ['product', 'quantity']
+
+
+Теперь, когда Вы будете использовать эту форму в Вашем представлении AllProd, Вам нужно будет передавать в нее экземпляр модели Product, а не его строковое представление. Вы можете сделать это, изменив Ваш код следующим образом:
+
+def post(self, request, *args, **kwargs):
+    form = self.get_form()
+    if form.is_valid():
+        self.quantity = form.cleaned_data.get('quantity')
+        self.product = form.cleaned_data.get('product')
+        self.user = request.user
+        return self.form_valid(form)
+    else:
+        return self.form_invalid(form)
+
+def form_valid(self, form):
+    self.object = form.save(commit=False)
+    self.object.user = self.user
+    self.object.quantity = self.quantity
+    self.object.save()
+    return super().form_valid(form)
+
+
+Теперь, когда Вы отправляете форму, Django будет автоматически сохранять экземпляр модели Product в поле product модели Basket.
