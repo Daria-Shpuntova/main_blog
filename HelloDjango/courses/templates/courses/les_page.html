@@ -1,0 +1,71 @@
+{% extends 'courses/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block main %}
+
+
+<section class="container">
+    <div class="container-text les">
+
+<div class="one-course">
+
+  <h2 class="courses_h2">{{ object.title }}</h2>
+  {% if object.img %}
+  <img src="{{ object.img.url }}" alt="{{ object.title }}">
+  {% else %}
+  <img src="/pictures/default.jpg" alt="{{ object.title }}">
+  {% endif %}
+
+
+</div>
+  <div class="aside">
+    <h2 class="courses_h2">Видео-урок {{ title }}</h2>
+    <p>{{ desk }}</p>
+      {% if object.free %}
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ video }}"
+              title="YouTube video player" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+      {% elif user.is_authenticated == False %}
+      <p><a href="{% url 'reg' %}">Зарегистрируйтесь </a> на сайте и купите подписку, что бы посмотреть этот курс</p>
+      {% elif user.profiles.ac_type == 'Бесплатный пакет' %}
+       <p>Необходимо купить <a href="{% url 'tarif' %}">подписку </a> на сайте , что бы посмотреть этот курс</p>
+      {% else %}
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ video }}"
+              title="YouTube video player" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+      {% endif %}
+
+<div>
+    <h3 class="courses_h2">Оставить комментарий</h3>
+        {% if not user.is_authenticated %}
+            <p>Вы не можете оставлять комментарии</p>
+        {% else %}
+            <form id="commentForm" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+                <div class="btn-coment" type="submit">Отправить комментарий</div>
+            </form>
+        {% endif %}
+</div>
+
+<div id="comments"  class="comments">
+<h3 class="courses_h2">Комментарии</h3>
+         {% for comment in comments %}
+            <div class="comm">
+             <h4>{{ comment.avtor }}</h4><i>{{ comment.date }}</i>
+             <p>{{ comment.text }}</p>
+            </div>
+         {% endfor %}
+
+</div>
+
+  </div>
+</div>
+</section>
+
+{% endblock %}

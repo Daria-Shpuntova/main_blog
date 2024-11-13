@@ -1,0 +1,30 @@
+{% extends 'courses/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block main %}
+
+<div class="container">
+    <div class="container-text ar">
+    <div class="articles">
+    <h1>Полезные статьи</h1>
+    </div>
+
+
+{% for article in articles %}
+
+    <div class="article">
+        <a href="{{ article.id }}">
+    <h2 class="ar-name">{{ article.name }}</h2>
+     <p class="ar-text">{{ article.text|truncatewords:150 }}</p>
+            <p>{{ article.id }}</p>
+        </a>
+</div>
+
+
+{% endfor %}
+</div>
+</div>
+{% endblock %}

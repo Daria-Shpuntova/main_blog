@@ -1,0 +1,76 @@
+{% extends 'courses/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block main %}
+
+<section class="container">
+<div class="container-text course">
+<div class="one-course">
+  <h2 class="courses_h2">{{ object.title }}</h2>
+  {% if object.img %}
+  <img src="{{ object.img.url }}" alt="{{ object.title }}">
+  {% else %}
+  <img src="/pictures/default.jpg" alt="{{ object.title }}">
+  {% endif %}
+
+</div>
+  <div class="aside">
+    <h2 class="courses_h2">Описание курса</h2>
+    <p>{{ object.description }}</p>
+    <h2 class="courses_h2">Программа курса :</h2>
+     {% if object.free == True %}
+        <ul>
+          {% for les in lessons %}
+          <li><a href="{{ les.get_absolute_url }}">{{ les.title }}</a></li>
+          {% endfor %}
+          </ul>
+    {% else %}
+        {% if object.free == False and user.is_authenticated == False %}
+        <p><a href="{% url 'reg1' %}">Зарегистрируйтесь </a> на сайте и купите подписку, что бы посмотреть этот курс</p>
+            {% else %}
+            {{ user.profile.ac_type }}
+                {% if user.profiles.ac_type == 'Полный пакет' %}
+
+          <ul>
+          {% for les in lessons %}
+          <li><a href="{{ les.get_absolute_url }}">{{ les.title }}</a></li>
+          {% endfor %}
+          </ul>
+      {% else %}
+        <p>Необходимо купить <a href="{% url 'tarif' %}">подписку </a> на сайте , что бы посмотреть этот курс</p>
+      {% endif %}
+    {% endif %}
+      {% endif %}
+  </div>
+</div>
+</section>
+
+<section  class="container">
+     <div class="container-text">
+          <div class="application">
+          <div class="application-text">
+               <h2>Оставте заявку и начните учиться уже сегодня</h2>
+               <p>Если у вас остались вопросы или вы не знаете что выбрать, оставте номер телефона - и мы
+                    обязательно с вами свяжемся, что бы ответить на все ваши вопросы</p>
+          </div>
+          <div class="application-form">
+               <form class="applicationForm" id="applicationForm" method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div class="smalls">
+                    <small class="error_name"></small>
+                    <small class="error_phone"></small>
+                    <small class="error_email"></small>
+                    </div>
+                   <button class="btn-send">Оставить заявку</button>
+               </form>
+          </div>
+     </div>
+
+     </div>
+</section>
+
+{% endblock %}

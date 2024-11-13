@@ -1,0 +1,40 @@
+{% extends 'courses/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+
+{% block main %}
+<section class="container">
+     <div class="container-text">
+          <div class="container-text-item">
+     {% for direction in directions %}
+     <a class="direction"  href="/courses/cat/{{ direction.slug }}">{{ direction.direction }}</a>
+     {% endfor %}
+     </div>
+
+     <div class="container-text-all"><a class="all_directions" href="{% url 'homecourses' %}">Все курсы</a></div>
+     </div>
+</section>
+
+{% for course in courses %}
+<section class="container_course">
+  <a class="container-text container-text_a" href="{{ course.get_absolute_url }}">
+      <h2 class="courses_h2">{{ course.title }}</h2>
+      <div class="courses_text">
+     <div class="courses_text_img">
+    {% if course.img %}
+    <img src="{{ course.img.url }}" alt="{{ course.title }}">
+    {% else %}
+    <img src="/oictures/default.jpg" alt="{{ course.title }}">
+    {% endif %}
+     </div>
+    <div class="courses_text_context">
+    <p>{{ course.description|truncatewords:75 }}</p>
+     </div>
+      </div>
+  </a>
+</section>
+{% endfor %}
+{% endblock %}
