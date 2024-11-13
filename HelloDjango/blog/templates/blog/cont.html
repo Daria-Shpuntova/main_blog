@@ -1,0 +1,68 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+<h2>{{ title }}</h2>
+<div class="cont">
+<div class="col-md-6 d-flex align-items-stretch col-1">
+    <div class="info-wrap w-100 p-lg-5 p-4">
+
+        <div class="dbox w-100 d-flex align-items-start">
+            <div class="icon d-flex align-items-center justify-content-center">
+            <span class="fa fa-map-marker"></span>
+            </div>
+
+            <div class="text pl-3">
+            <p><span>Адрес:</span> Россия, Москва</p>
+            </div>
+        </div>
+
+        <div class="dbox w-100 d-flex align-items-center">
+            <div class="icon d-flex align-items-center justify-content-center">
+            <span class="fa fa-phone"></span>
+            </div>
+
+            <div class="text pl-3">
+            <p><span>Телефон:</span> <a href="tel://1234567920">+ 1235 2355 98</a></p>
+            </div>
+        </div>
+
+        <div class="dbox w-100 d-flex align-items-center">
+            <div class="icon d-flex align-items-center justify-content-center">
+            <span class="fa fa-paper-plane"></span>
+            </div>
+
+            <div class="text pl-3">
+            <p><span>Email:</span> <a href="mailto:info@yoursite.com">info@site.ru</a></p>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="col-md-6 col-1">
+<div style="position:relative;overflow:hidden;">
+        <a href="https://yandex.ru/maps/213/moscow/?utm_medium=mapframe&utm_source=maps"
+                 style="color:#eee;font-size:12px;position:absolute;top:0px;">Москва</a>
+        <a href="https://yandex.ru/maps/213/moscow/geo/krasnaya_ploshchad/1520633025/?indoorLevel=1&ll=37.620941%2C55.753575&utm_medium=mapframe&utm_source=maps&z=17.58"
+                 style="color:#eee;font-size:12px;position:absolute;top:14px;">Красная площадь — Яндекс Карты</a>
+        <iframe src="https://yandex.ru/map-widget/v1/?indoorLevel=1&ll=37.620941%2C55.753575&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgoxNTIwNjMzMDI1EjnQoNC-0YHRgdC40Y8sINCc0L7RgdC60LLQsCwg0JrRgNCw0YHQvdCw0Y8g0L_Qu9C-0YnQsNC00YwiCg0dfBZCFaIDX0I%2C&z=17.58"
+                  width="560" height="400" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe></div>
+</div>
+</div>
+{% endblock %}
+
+{% block aside_block %}
+<h4 class="mt-2">Интересные статьи</h4>
+<p>of type and scrambled it to make a type specimen book. It has survived not only five centuries,
+    but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised
+    in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently
+    with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+<h4 class="mt-2">Интересные статьи2</h4>
+<p>of type and scrambled it to make a type specimen book. It has survived not only five centuries,
+    but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised
+    in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently
+    with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+{% endblock %}

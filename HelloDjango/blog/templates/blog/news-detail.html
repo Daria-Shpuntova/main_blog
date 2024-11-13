@@ -1,0 +1,68 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+
+<h1>{{ title }}</h1>
+
+
+<p>{{ post.text }}</p>
+<div class="row">
+    <div>
+        <img src="{{ post.avt.profiles.img.url }}" alt="{{ post.avt }}" class="user_imeg">
+    </div>
+</div>
+ <p>Автор: <a href="{% url 'user-news' post.avt %}"> {{ post.avt }} </a></p>
+    <p> дата: {{ post.date|date:'d E Y, время: H:i' }}</p>
+
+{% if object.avtor == user %}
+<hr>
+<a href="{% url 'news-update' object.id %}" class="btn btn-info">Обновить статью</a>
+<a href="{% url 'delete-news' object.id %}" class="btn btn-info">Удалить статью</a>
+{% endif %}
+
+
+<div>
+    <h3>Оставить комментарий</h3>
+        {% if not user.is_authenticated %}
+            <p>Вы не можете оставлять комментарии</p>
+        {% else %}
+            <form id="commentForm" action="{% url 'news-detail' object.id %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-outline-success" type="submit">Отправить комментарий</button>
+            </form>
+        {% endif %}
+</div>
+
+<div id="comments"  class="comments">
+<h2>Комментарии</h2>
+         {% for comment in comments %}
+            <div class="comm">
+             <h4>{{ comment.avtor }}</h4><i>{{ comment.date }}</i>
+             <p>{{ comment.text }}</p>
+            </div>
+         {% endfor %}
+
+</div>
+
+
+{% endblock %}
+
+{% block aside_block %}
+
+<h4 class="mt-2">Интересные статьи2</h4>
+<p>of type and scrambled it to make a type specimen book. It has survived not only five centuries,
+    but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised
+    in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently
+    with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+<h4 class="mt-2">Интересные статьи</h4>
+<p>of type and scrambled it to make a type specimen book. It has survived not only five centuries,
+    but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised
+    in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently
+    with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+
+{% endblock %}

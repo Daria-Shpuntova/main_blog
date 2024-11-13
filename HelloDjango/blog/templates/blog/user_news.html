@@ -1,0 +1,63 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+
+<h2>Все статьи от автора: {{ view.kwargs.username }} </h2>
+<h4>Количество статей: {{ page_obj.paginator.count }}</h4>
+
+{% for post in news %}
+<div>
+ <h3>{{ post.title }}</h3>
+<p>{{ post.text|truncatechars:200  }}</p>
+<div class="row">
+    <div>
+        <img src="{{ post.avt.profiles.img.url }}" alt="{{ post.avt }}" class="user_imeg">
+    </div>
+</div>
+ <p>Автор: <a href="{% url 'user-news' post.avt %}"> {{ post.avt }} </a></p>
+    <p> дата: {{ post.date|date:'d E Y, время: H:i' }}</p>
+<a href="{% url 'news-detail' post.id %}" class="btn btn-outline-success">Читать далее</a>
+</div>
+{% endfor %}
+
+{% if is_paginated %}
+    {% if page_obj.has_previous %}
+    <a href="{% url 'home' %}"  class="btn btn-outline-danger">Начало</a>
+    <a href="?page={{ page_obj.previous_page_number }}"  class="btn btn-outline-danger">Предыдущая</a>
+    {% endif %}
+
+    {% for num in page_obj.paginator.page_range %}
+        {% if num == page_obj.number  %}
+        <button class="btn btn-danger">{{ num }}</button>
+        {% elif num > page_obj.number|add:'-3' and  num < page_obj.number|add:'3' %}
+        <a href="?page={{ num }}" class="btn btn-outline-danger">{{ num }}</a>
+        {% endif %}
+    {% endfor %}
+
+    {% if page_obj.has_next %}
+    <a href="?page={{ page_obj.next_page_number }}"  class="btn btn-outline-danger">Следующая</a>
+    <a href="?page={{ page_obj.paginator.num_pages }}"  class="btn btn-outline-danger">Последняя</a>
+    {% endif %}
+
+{% endif %}
+
+{% endblock %}
+
+{% block aside_block %}
+
+<h4 class="mt-2">Интересные статьи2</h4>
+<p>of type and scrambled it to make a type specimen book. It has survived not only five centuries,
+    but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised
+    in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently
+    with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+<h4 class="mt-2">Интересные статьи</h4>
+<p>of type and scrambled it to make a type specimen book. It has survived not only five centuries,
+    but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised
+    in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently
+    with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+
+{% endblock %}
