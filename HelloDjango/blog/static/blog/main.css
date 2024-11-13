@@ -1,0 +1,98 @@
+body {
+    background-color: #31d8f959!important;
+}
+
+.user_imeg{
+    height:64px;
+    width:65px;
+    border-radius:50%;
+    margin-height:10px;
+}
+
+.navbar-brand , .nav-link {
+    color:#31d8f959!important;
+}
+
+.container-fluid .navbar-toggler {
+    color: #31d8f959;
+    background-color: #31d8f959;
+}
+
+
+@media (max-width:991px) {
+    #navbarSupportedContent{text-align: left}
+}
+
+.nav-link2{color:#0f6b7e!important}
+
+.post{
+    border:1px solid #00577e;
+    border-radius:25px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.form-register {
+    padding:20px;
+    background: #31d8f959;
+    border: 1px solid silver;
+    margin-top:20px;
+}
+
+.form-register .helptext {color:#b7b7b7}
+
+.form-register ul.errorlist {
+    color:#ca5858;
+    font-weight:bold;
+}
+
+.cont{
+    display:flex;
+    border:1px solid #1191e7;
+}
+
+@media (max-width:991px) {
+    .cont {
+        flex-direction: column;
+    }
+    .cont .col-1 {
+        width:100%;
+    }
+}
+
+.cont a{
+    color:#1191e7;
+    text-decoration:none;
+}
+
+.auth input, .auth textarea{
+    display:block;
+    width:96%;
+    margin-top:5px;
+    border:1px solid silver;
+    border-radius: 5px;
+    padding:2%;
+}
+
+.about img{
+    width:30%;
+    float: left;
+    margin: 10px 10px 10px 0;
+}
+
+
+.comm {
+    border:1px solid #00577e;
+    border-radius:25px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+#commentForm label{margin:15px}
+
+#commentForm textarea{padding:15px}
+
+#commentForm label, #commentForm textarea{
+    width:100%;
+}
+
