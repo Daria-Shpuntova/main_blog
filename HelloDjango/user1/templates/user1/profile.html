@@ -1,0 +1,37 @@
+{% extends 'courses/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block main %}
+
+<div class="container">
+    <div class="container-text profil">
+        <h2 class="courses_h2 auth_h2">{{ title }}</h2>
+
+    <div class="profil">
+      <img class="profil_img" width="64" height="64" src="{{ user.profiles.img.url }}">
+      <p class="profil_text">
+        <strong>@{{ user.username }}</strong>
+          {% if user.email %}
+          <br><br><b>Email: {{ user.email }}</b>
+          {% endif %}
+      </p>
+    </div>
+
+<form method="post" enctype="multipart/form-data" class="profil_form">
+    {% csrf_token %} <!--так не видна пользователю-->
+    {{ updateForm.as_p }}
+    {{ profileForm.as_p }}
+    <button class="profil_btn" type="submit">Обновить</button>
+    <br>
+    <button class="profil_btn_pas" ><a href="{% url 'password_change' %}">Изменить пароль</a></button>
+
+
+</form>
+</div>
+    </div>
+
+
+{% endblock %}

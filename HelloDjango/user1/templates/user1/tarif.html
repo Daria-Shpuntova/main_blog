@@ -1,0 +1,141 @@
+{% extends 'courses/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block main %}
+<section class="container">
+     <div class="container-text why">
+          <div class="why1">
+          <h2>Почему выбирают ВидеоМаркет?</h2>
+          <h4>Лучший выбор для профессионального обучения</h4>
+         </div>
+          <div class="why2">
+               <div class="why2-1">
+               <div class="why3"><div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                         <polygon points="16 3 21 8 8 21 3 21 3 16 16 3"></polygon></svg>
+                    </div>
+                    <h3>Удобство покупки</h3>
+                    <p>Быстрый и простой доступ к
+                         обучающим видеокурсам</p>
+               </div>
+               <div class="why3"><div>
+                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle>
+                          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                    </div>
+                    <h3>Качество и <br>надежность</h3>
+                    <p>Высококлассные  видеокурсы от ведущих  экспертов</p>
+               </div>
+               </div>
+               <div class="why2-1">
+               <div class="why3"><div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                         <circle cx="12" cy="12" r="5"/>
+                         <path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg>
+                    </div>
+                    <h3>Широкий<br>  ассортимент</h3>
+                    <p>Более 100 различных видеокурсов</p>
+               </div>
+               <div class="why3"><div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                         <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line>
+                         <line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line>
+                         <line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>
+                         </div>
+                    <h3>Мастерство на <br> практике</h3>
+                    <p>Наши курсы основаны на реальных случаях из практики</p>
+               </div>
+               </div>
+          </div>
+     </div>
+</section>
+
+{% if user.is_authenticated == False or user.profiles.ac_type == 'Бесплатный пакет' %}
+
+<div class="container">
+    <div class="container-text tarif">
+    <h2>{{ title }}</h2>
+    <h4>У нас на сайте вы можете приобрести полную подписку на сайте, что предоставит доступ ко всем курсам сайта.</h4>
+
+
+
+        <div class="tarifs">
+            <div class="tarif_f">
+                <h2>Бесплатный</h2>
+                <h3>0 <small>рублей</small></h3>
+                 <ul class="list_tarif">
+                    <li>Бесплатные курсы</li>
+                    <li>Тех-поддержка</li>
+                    <li>Консультации</li>
+                    <li>Домашние работы</li>
+                 </ul>
+
+                <button class="btn_tarif openmodal_free" type="submit">Подключить бесплатный тариф</button>
+            </div>
+                <div class="modal_free" aria-hidden="true">
+                  <div class="modal-dialog">
+                        <a href="#" class="btn-close closemodal" aria-hidden="true">&times;</a>
+                    <div class="modal-body">
+                        {% if user.is_authenticated %}
+                            <h2>У вас уже есть бесплатная подписка</h2>
+                        {% else %}
+                            <h2><a href="{% url 'reg' %}">Зарегистрируйтесь </a> на сайте или <a href="{% url 'enter' %}">войдите </a> в личный кабинет</h2>
+                        {% endif %}
+                    </div>
+
+                </div>
+                </div>
+
+            <div class="tarif_f">
+                <h2>Полный</h2>
+                <h3>1 500<small>рублей</small></h3>
+                 <ul class="list_tarif">
+                    <li>Полностью все курсы</li>
+                    <li>Улучшенная тех-поддержка</li>
+                    <li>Консультации</li>
+                    <li>Домашние работы</li>
+                 </ul>
+                {% if user.is_authenticated %}
+                <form id="fullform" method="post">
+                {% csrf_token %} <!--так форма не видна пользователю-->
+                {{ tarifform.as_p }}
+                    <button class="btn_tarif openmodal_full" type="submit">Подключить полный тариф</button>
+
+                  </form>
+                {% else %}
+                     <button class="btn_tarif openmodal_full" type="submit">Подключить полный тариф</button>
+                {% endif %}
+            </div>
+            <div class="modal_full" aria-hidden="true">
+                  <div class="modal-dialog">
+
+                        <a href="#" class="btn-close closemodal" aria-hidden="true">&times;</a>
+
+                    <div class="modal-body">
+                        {% if user.is_authenticated %}
+                            <h2>Вы успешно приобрели полную подписку</h2>
+
+                        {% else %}
+                            <h2><a href="{% url 'reg' %}">Зарегистрируйтесь </a> на сайте или <a href="{% url 'enter' %}">войдите </a> в личный кабинет</h2>
+                        {% endif %}
+
+                </div>
+                </div>
+        </div>
+      </div>
+    </div>
+    </div>
+{% else %}
+<div class="container">
+     <div class="container-text tarif">
+    <h2>{{ title }}</h2>
+<h3>У вас куплена максимальная подписка</h3>
+     </div>
+</div>
+
+
+{% endif %}
+
+{% endblock %}

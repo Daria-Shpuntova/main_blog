@@ -1,0 +1,23 @@
+{% extends 'courses/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block main %}
+
+<div class="container">
+    <div class="container-text container-auth">
+ <h2 class="courses_h2 auth_h2">Страница авторизации</h2>
+<form method="post" class="form-register auth">
+    {% csrf_token %} <!--так форма не видна пользователю-->
+    {{ form.as_p }}
+    <button class="btn-enter" type="submit">Войти</button>
+    <p><a class="courses_h2" href="{% url 'password_reset' %}">Восстановить пароль</a></p>
+    <hr>
+    <p>Нет аккаунта? <a class="courses_h2" href="{% url 'reg1' %}">Зарегестрироваться</a></p>
+</form>
+</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'courses/base.html' %}
+
+{% block main %}
+{% if user.is_authenticated %}
+    <h2>У вас уже есть бесплатная подписка</h2>
+{% else %}
+    <h2><a href="{% url 'reg' %}">Зарегистрируйтесь </a> на сайте или <a href="{% url 'enter' %}">войдите </a> в личный кабинет</h2>
+{% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'courses/base.html' %}
+
+{% block main %}
+
+{% if user.is_authenticated %}
+
+    <h2>Вы успешно приобрели полную подписку</h2>
+    <form method="post">
+    {% csrf_token %}
+    {{ form }}
+    </form>
+{% else %}
+    <h2><a href="{% url 'reg' %}">Зарегистрируйтесь </a> на сайте или <a href="{% url 'enter' %}">войдите </a> в личный кабинет</h2>
+{% endif %}
+
+
+{% endblock %}
