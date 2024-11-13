@@ -1,0 +1,44 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}
+Кабинет пользователя
+{% endblock %}
+
+{% block content %}
+<h1>Кабинет пользователя</h1>
+
+<div class="d-flex text-body-secondary pt-3">
+      <img class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="64" height="64" src="{{ user.profiles.img.url }}">
+      <p class="pb-3 mb-0 small lh-sm border-bottom">
+        <strong class="d-block text-gray-dark">@{{ user.username }}</strong>
+          {% if user.email %}
+          <b>Email: {{ user.email }}</b>
+          {% endif %}
+      </p>
+    </div>
+
+<form method="post" enctype="multipart/form-data" class="form-register mt-4">
+    {% csrf_token %} <!--так форма не видна пользователю-->
+    {{ updateForm.as_p }}
+    {{ profileForm.as_p }}
+    <button class="btn btn-outline-success" type="submit">Обновить</button>
+    <hr>
+
+
+</form>
+
+
+{% endblock %}
+
+{% block aside_block %}
+<h4 class="mt-2">Интересные статьи</h4>
+<p>of type and scrambled it to make a type specimen book. It has survived not only five centuries,
+    but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised
+    in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently
+    with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+<h4 class="mt-2">Интересные статьи2</h4>
+<p>of type and scrambled it to make a type specimen book. It has survived not only five centuries,
+    but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised
+    in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently
+    with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+{% endblock %}

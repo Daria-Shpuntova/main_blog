@@ -1,0 +1,31 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+<h1>{{ title }}</h1>
+<form method="post" class="form-register">
+    {% csrf_token %} <!--так форма не видна пользователю-->
+
+    {{ form.as_p }}
+    <button class="btn btn-outline-success" type="submit">Зарегестрироваться</button>
+    <hr>
+    <p>Уже зарегистрированны?<a href="{% url 'user' %}">Войти в личный кабинет</a></p>
+
+</form>
+{% endblock %}
+
+{% block aside_block %}
+<h4 class="mt-2">Интересные статьи</h4>
+<p>of type and scrambled it to make a type specimen book. It has survived not only five centuries,
+    but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised
+    in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently
+    with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+<h4 class="mt-2">Интересные статьи2</h4>
+<p>of type and scrambled it to make a type specimen book. It has survived not only five centuries,
+    but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised
+    in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently
+    with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+{% endblock %}
